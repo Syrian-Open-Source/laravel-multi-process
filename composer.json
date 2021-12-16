@@ -1,0 +1,36 @@
+{
+    "name": "syrian-open-source/laravel-multi-process",
+    "description": "Laravel package making you able to perform several process instead of executing them through one process",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "multi-process",
+        "laravel-multi-process",
+        "syrian-open-source"
+    ],
+    "authors": [
+        {
+            "name": "Karam Mustafa",
+            "email": "karam2mustafa@gmail.com",
+            "homepage": "https://github.com/karam-mustafa",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5"
+    },
+    "autoload" : {
+        "psr-4": {
+            "SOS\\LaravelMultiProcess\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "KMLaravel\\LaravelMultiProcess\\Providers\\LaravelMultiProcessServiceProviders"
+            ]
+        }
+    }
+}
