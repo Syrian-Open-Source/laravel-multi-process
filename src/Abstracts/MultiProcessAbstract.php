@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SOS\LaravelMultiProcess\Classes;
+namespace SOS\MultiProcess\Classes;
 
 
 class MultiProcessAbstract

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SOS\LaravelMultiProcess\Commands;
+namespace SOS\MultiProcess\Commands;
 
 
 use Illuminate\Console\Command;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Artisan;
 class InstallCommand extends Command
 {
 
-    public $packageLink = 'https://github.com/karam-mustafa/laravel-query-helper';
+    public $packageLink = 'https://github.com/syrian-open-source/laravel-multi-process';
 
     /**
      * The name and signature of the console command.
@@ -24,7 +24,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'install all laravel-query-helper package dependencies';
+    protected $description = 'install all laravel-multi-process package dependencies';
 
     /**
      * Create a new command instance.
@@ -43,9 +43,6 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        Artisan::call('vendor:publish --provider="KMLaravel\\KMLaravel\QueryHelper\Facade\QueryHelperFacade\Providers\\KMLaravel\QueryHelper\Facade\QueryHelperFacadeServiceProviders"');
-        Artisan::call('vendor:publish --tag=query-helper-config');
-
         $this->info('<info> Install the dependencies was success</info>');
 
         if ($this->confirm('Would you like to show some love by starring the repo?', true)) {

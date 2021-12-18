@@ -21,7 +21,7 @@
     },
     "autoload" : {
         "psr-4": {
-            "SOS\\LaravelMultiProcess\\" : "src/"
+            "SOS\\MultiProcess\\" : "src/"
         }
     },
     "autoload-dev": {
@@ -29,7 +29,7 @@
     "extra" : {
         "laravel" : {
             "providers" : [
-                "KMLaravel\\LaravelMultiProcess\\Providers\\LaravelMultiProcessServiceProviders"
+                "SOS\\MultiProcess\\Providers\\MultiProcessServiceProviders"
             ]
         }
     }
