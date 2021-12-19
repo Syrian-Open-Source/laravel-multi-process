@@ -1,12 +1,12 @@
 <?php
 
 
-namespace SOS\MultiProcess\Interfaces;
+namespace SOS\MultiProcess\Providers;
 
 
 use Illuminate\Support\ServiceProvider;
-use SOS\LaravelMultiProcess\Classes\MultiProcess;
-use SOS\LaravelMultiProcess\Commands\InstallCommand;
+use SOS\MultiProcess\Classes\MultiProcess;
+use SOS\MultiProcess\Commands\InstallCommand;
 
 class MultiProcessServiceProviders extends ServiceProvider
 {
