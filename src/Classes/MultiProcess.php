@@ -143,11 +143,11 @@ class MultiProcess
      */
     public function setOptions($options)
     {
-        $this->options = array_merge($this->options , $options);
+        $this->options = array_merge($this->options, $options);
     }
 
     /**
-     * todo description
+     * display message depending on symfony returned type.
      *
      * @param $type
      * @param $buffer
@@ -165,7 +165,9 @@ class MultiProcess
 
 
     /**
-     * todo description
+     * this function will execute run function in symfony component
+     * the function will check if we must display the error or the
+     * response status from the executed functions from the symfony classes.
      *
      * @author karam mustafa
      */
@@ -173,6 +175,8 @@ class MultiProcess
     {
         $callback = function (Process $process) {
             return $process->run(function ($type, $buffer) {
+
+                // if we enable the output, then display this message depending on it type.
                 if ($this->getOptions('enableOutput')) {
                     $this->displayOutputMessage($type, $buffer);
                 }
@@ -181,29 +185,31 @@ class MultiProcess
 
         $this->process($callback);
 
-        $this->checkAvailability($callback);
+        $this->resolveNotRunningProcess($callback);
     }
 
 
     /**
-     * todo description
+     * start all process.
      *
      * @author karam mustafa
      */
     public function start()
     {
+        // define the callback function.
         $callback = function (Process $process) {
             return $process->start();
         };
 
         $this->process($callback);
 
-        $this->checkAvailability($callback);
+        $this->resolveNotRunningProcess($callback);
     }
 
 
     /**
-     * todo description
+     * this function will set the require config to a symfony process component.
+     * and run what a callback will execute.
      *
      * @param $callback
      *
@@ -219,21 +225,28 @@ class MultiProcess
                 ->setIdleTimeout($this->getOptions('ideTimeOut'))
                 ->setWorkingDirectory(base_path());
 
+            // Add the process to the processing property
             $this->processing[] = $process;
 
+            // run the given callback from the process argument
+            // this callback could be a start or run function in symfony component
+            // or might be any callback that accept Process parameter as a dependency.
             $callback($process);
         }
     }
 
 
     /**
-     * todo description
+     * this function will check if the entire process is was not finished yet
+     * if there are any process that waiting to process, run this process
+     * and remove it from processing array
+     * then convert this task status to finish.
      *
      * @param $callback
      *
      * @author karam mustafa
      */
-    private function checkAvailability($callback)
+    private function resolveNotRunningProcess($callback)
     {
         while (count($this->processing) || !$this->isFinished()) {
             foreach ($this->processing as $i => $runningProcess) {
@@ -253,12 +266,14 @@ class MultiProcess
     }
 
     /**
-     * todo description
+     * after each task that processed in process function.
+     * we will find the next task that have a waiting status.
+     * and convert it status to a processing.
      *
-     * @return |null
+     * @return null
      * @author karam mustafa
      */
-    private function getNextTask()
+    private function next()
     {
         foreach ($this->tasks as $i => $task) {
             if ($task[$this->stateKey] == $this->waitingState) {
@@ -272,7 +287,7 @@ class MultiProcess
 
 
     /**
-     * todo description
+     * convert task state to completed
      *
      * @param $key
      *
@@ -280,11 +295,13 @@ class MultiProcess
      */
     private function finishTask($key)
     {
-        $this->tasks[$key]['state'] = $this->completedState;
+        if (isset($this->tasks[$key])) {
+            $this->tasks[$key]['state'] = $this->completedState;
+        }
     }
 
     /**
-     * todo description
+     * check if the all processes are complete.
      *
      * @return bool
      * @author karam mustafa
@@ -301,14 +318,14 @@ class MultiProcess
 
 
     /**
-     * todo description
+     * check if there is a next task, or we are finish the all processes.
      *
      * @return bool|null
      * @author karam mustafa
      */
     private function checkIfCanProcess()
     {
-        $task = $this->getNextTask();
+        $task = $this->next();
         return (count($this->processing) < $this->processCount) && $task
             ? $task
             : false;
