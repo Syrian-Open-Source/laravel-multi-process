@@ -4,7 +4,7 @@
 
 Laravel package making you able to perform several process instead of executing them through one process
 Installation
-------------
+
 ##### 1 - Dependency
 The first step is using composer to install the package and automatically update your composer.json file, you can do this by running:
 
