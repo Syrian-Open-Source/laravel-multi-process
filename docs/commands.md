@@ -39,12 +39,11 @@ Usage
     )->setOptions([
        'timeOut' => 60,
        'ideTimeOut' => 60,
-       'workingDirectory' => null,
        'enableOutput' => true,
        'processTime' => 3,
     );
 
-    // run function will allows you to get the output from the execution process.
+    // run or start your tasks.
     $processor->start();
 
 ```

@@ -20,9 +20,6 @@ return [
         // trying to execute the each command.
         'ideTimeOut' => 60,
 
-        // the initial work directory, the default is base_bath()
-        'workingDirectory' => null,
-
         // dump output if you are using run method to execute your tasks
         'enableOutput' => true,
 
