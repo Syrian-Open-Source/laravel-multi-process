@@ -42,12 +42,15 @@ class MultiProcessServiceProviders extends ServiceProvider
     }
 
     /**
-     * @desc publish files
+     * publish files
+     *
      * @author karam mustafa
      */
     protected function publishesPackages()
     {
-
+        $this->publishes([
+            __DIR__.'/../Config/multi_process.php' => config_path('multi_process.php'),
+        ], 'multi-process-config');
     }
 
     /**
