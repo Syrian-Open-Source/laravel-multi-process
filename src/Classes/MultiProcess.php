@@ -138,11 +138,14 @@ class MultiProcess
     /**
      * @param  mixed  $options
      *
+     * @return MultiProcess
      * @author karam mustaf
      */
     public function setOptions($options)
     {
         $this->options = array_merge($this->options, $options);
+
+        return $this;
     }
 
     /**
