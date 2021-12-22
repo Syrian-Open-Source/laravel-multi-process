@@ -42,6 +42,8 @@ class InstallCommand extends Command
      */
     public function handle()
     {
+        system('php artisan  vendor:publish --tag=multi-process-config');
+
         $this->info('<info> Install the dependencies was success</info>');
 
         if ($this->confirm('Would you like to show some love by starring the repo?', true)) {
