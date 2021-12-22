@@ -18,6 +18,7 @@ php artisan multi-process:install
 
 Usage
 -----------
+- [Run process from commands](https://github.com/syrian-open-source/laravel-multi-process/blob/main/docs/commands.md)
 
 
 Changelog
