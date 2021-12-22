@@ -8,7 +8,7 @@ Usage
         "php artisan make:model ControllerName",
         // and you can define unlimited commands
     );
-    $processor->start();
+    $proceses->start();
 
 ```
 * Define multiple process and execute them by run function.
@@ -22,7 +22,7 @@ Usage
     );
 
     // run function will allows you to get the output from the execution process.
-    $processor->run();
+    $proceses->run();
 
 ```
 * Add options.
@@ -44,7 +44,7 @@ Usage
     );
 
     // run or start your tasks.
-    $processor->start();
+    $proceses->start();
 
 ```
 
