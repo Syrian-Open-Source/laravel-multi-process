@@ -23,7 +23,7 @@
     "autoload" : {
         "psr-4": {
             "SOS\\MultiProcess\\" : "src",
-            "SOS\\MultiProcess\\Tests\\": "tests"
+            "SOS\\MultiProcess\\Tests\\": "src/tests"
 
         }
     },
