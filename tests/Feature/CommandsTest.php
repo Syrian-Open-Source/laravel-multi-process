@@ -2,12 +2,13 @@
 
 namespace SOS\MultiProcess\Tests\Feature;
 
-use Illuminate\Support\Facades\File;
-use PHPUnit\Framework\TestCase;
-use SOS\MultiProcess\Classes\MultiProcess;
 
-class CommandsTest extends TestCase
+use SOS\MultiProcess\Classes\MultiProcess;
+use SOS\MultiProcess\Tests\BaseTest;
+
+class CommandsTest extends BaseTest
 {
+
     /**
      * test if the commands are running successfully.
      *
@@ -17,22 +18,19 @@ class CommandsTest extends TestCase
      */
     public function test_if_commands_run_successfully()
     {
-        $s = PHP_OS == "Windows" || PHP_OS == "WINNT" ? "\\" : '/';
-        $processInstance  = new MultiProcess();
-        $processor = $processInstance->setTasks(
+        $completedState = 3;
+
+        $processor = (new MultiProcess())->setTasks(
             "php artisan make:model MultiProcessTestModel",
             "php artisan make:model MultiProcessTestController"
-            )->setOptions([
+        )->setOptions([
             'enableOutput' => false
         ]);
-        $processor->run();
 
-        if (is_dir(app_path("Http{$s}Models"))) {
-            $this->assertTrue(File::exists(app_path("Http{$s}Models{$s}MultiProcessTestModel.php")));
-        } else {
-            $this->assertTrue(File::exists(app_path("Http{$s}MultiProcessTestModel.php")));
+        foreach ($processor->start()->getTasks() as $task) {
+            $this->assertEquals($task['state'], $completedState);
+
         }
 
-        $this->assertTrue(File::exists(app_path("Http{$s}Controllers{$s}MultiProcessTestController.php")));
     }
 }

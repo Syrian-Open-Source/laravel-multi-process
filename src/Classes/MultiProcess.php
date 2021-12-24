@@ -188,6 +188,8 @@ class MultiProcess
         $this->process($callback);
 
         $this->resolveNotRunningProcess($callback);
+
+        return $this;
     }
 
 
@@ -206,6 +208,9 @@ class MultiProcess
         $this->process($callback);
 
         $this->resolveNotRunningProcess($callback);
+
+        return $this;
+
     }
 
 
