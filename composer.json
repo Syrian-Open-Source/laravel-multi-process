@@ -22,7 +22,7 @@
     },
     "autoload" : {
         "psr-4": {
-            "SOS\\MultiProcess\\" : "src/"
+            "SOS\\MultiProcess\\" : "src"
         }
     },
     "autoload-dev": {
@@ -31,7 +31,8 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "phpunit --coverage-html coverage"
     },
     "extra" : {
         "laravel" : {
@@ -39,5 +40,7 @@
                 "SOS\\MultiProcess\\Providers\\MultiProcessServiceProviders"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
