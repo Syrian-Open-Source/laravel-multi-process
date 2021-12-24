@@ -18,7 +18,8 @@
     ],
     "require": {
         "php": "^7.2.5",
-        "symfony/process": ">=3.0"
+        "symfony/process": ">=3.0",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload" : {
         "psr-4": {
@@ -26,6 +27,12 @@
         }
     },
     "autoload-dev": {
+        "psr-4": {
+            "SOS\\MultiProcess\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "extra" : {
         "laravel" : {
