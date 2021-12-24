@@ -28,9 +28,9 @@ class CommandsTest extends TestCase
         $processor->run();
 
         if (is_dir(app_path("Http{$s}Models"))) {
-            $this->assertTrue(File::exists(app_path()."Http{$s}Models{$s}MultiProcessTestModel.php"));
+            $this->assertTrue(File::exists(app_path("Http{$s}Models{$s}MultiProcessTestModel.php")));
         } else {
-            $this->assertTrue(File::exists(app_path()."Http{$s}MultiProcessTestModel.php"));
+            $this->assertTrue(File::exists(app_path("Http{$s}MultiProcessTestModel.php")));
         }
 
         $this->assertTrue(File::exists(app_path("Http{$s}Controllers{$s}MultiProcessTestController.php")));
