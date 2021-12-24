@@ -21,7 +21,7 @@ class CommandsTest extends TestCase
 
         $processor = MultiProcess::setTasks(
             "php artisan make:model MultiProcessTestModel",
-            "php artisan make:model MultiProcessTestController",
+            "php artisan make:model MultiProcessTestController"
             )->setOptions([
             'enableOutput' => false
         ]);
