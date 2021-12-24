@@ -4,6 +4,7 @@ namespace SOS\MultiProcess\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\TestCase;
+use SOS\MultiProcess\Classes\MultiProcess;
 
 class CommandsTest extends TestCase
 {
@@ -18,7 +19,7 @@ class CommandsTest extends TestCase
     {
         $s = PHP_OS == "Windows" || PHP_OS == "WINNT" ? "\\" : '/';
 
-        $processor = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
+        $processor = MultiProcess::setTasks(
             "php artisan make:model MultiProcessTestModel",
             "php artisan make:model MultiProcessTestController",
             )->setOptions([
