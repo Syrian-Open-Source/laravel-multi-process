@@ -3,7 +3,7 @@ Usage
 * Define multiple process and execute them by start function.
 
 ```shell
-    $proceses = MultiProcessFacadeAlias::setTasks(
+    $proceses = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
         "php artisan make:model modelName",
         "php artisan make:model ControllerName",
         // and you can define unlimited commands
@@ -15,7 +15,7 @@ Usage
 
 ```shell
 
-    $proceses = MultiProcessFacadeAlias::setTasks(
+    $proceses = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
         "php artisan make:model modelName",
         "php artisan make:model ControllerName",
         // and you can define unlimited commands
@@ -32,7 +32,7 @@ Usage
     // default options are in multi_process.php file.
     // you can change them from the file
     // or you can basicly added them from the setter function.
-    $proceses = MultiProcessFacadeAlias::setTasks(
+    $proceses = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
         "php artisan make:model modelName",
         "php artisan make:model ControllerName",
         // and you can define unlimited commands

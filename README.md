@@ -16,7 +16,7 @@ composer require syrian-open-source/laravel-multi-process
 php artisan multi-process:install
 ```
 
-Usage
+Features
 -----------
 - [Run process from commands](https://github.com/syrian-open-source/laravel-multi-process/blob/main/docs/commands.md)
 

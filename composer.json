@@ -17,15 +17,18 @@
         }
     ],
     "require": {
-        "php": "^7.2.5",
-        "symfony/process": ">=3.0"
+        "phpunit/phpunit": "^9.5",
+        "symfony/process": "^5.4"
     },
     "autoload" : {
         "psr-4": {
-            "SOS\\MultiProcess\\" : "src/"
+            "SOS\\MultiProcess\\" : "src",
+            "SOS\\MultiProcess\\Tests\\": "src/tests"
         }
     },
-    "autoload-dev": {
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "phpunit --coverage-html coverage"
     },
     "extra" : {
         "laravel" : {
@@ -33,5 +36,10 @@
                 "SOS\\MultiProcess\\Providers\\MultiProcessServiceProviders"
             ]
         }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "orchestra/testbench": "^6.23"
     }
 }
