@@ -18,8 +18,8 @@
     ],
     "require": {
         "php": "^7.2.5",
-        "symfony/process": ">=3.0",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "symfony/process": "^5.4"
     },
     "autoload" : {
         "psr-4": {
