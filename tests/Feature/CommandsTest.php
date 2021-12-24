@@ -18,8 +18,8 @@ class CommandsTest extends TestCase
     public function test_if_commands_run_successfully()
     {
         $s = PHP_OS == "Windows" || PHP_OS == "WINNT" ? "\\" : '/';
-
-        $processor = MultiProcess::setTasks(
+        $processInstance  = new MultiProcess();
+        $processor = $processInstance->setTasks(
             "php artisan make:model MultiProcessTestModel",
             "php artisan make:model MultiProcessTestController"
             )->setOptions([
