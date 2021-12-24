@@ -24,7 +24,6 @@
         "psr-4": {
             "SOS\\MultiProcess\\" : "src",
             "SOS\\MultiProcess\\Tests\\": "src/tests"
-
         }
     },
     "scripts": {
