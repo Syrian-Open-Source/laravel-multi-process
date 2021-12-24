@@ -14,7 +14,7 @@ class Commands extends TestCase
      * @throws \Exception
      *
      */
-    public function test_center()
+    public function test_if_commands_run_successfully()
     {
         $result = MultiProcessFacade::setTasks('php artisan make:model MultiProcessModelTest');
 

@@ -22,12 +22,9 @@
     },
     "autoload" : {
         "psr-4": {
-            "SOS\\MultiProcess\\" : "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
+            "SOS\\MultiProcess\\" : "src",
             "SOS\\MultiProcess\\Tests\\": "tests"
+
         }
     },
     "scripts": {
