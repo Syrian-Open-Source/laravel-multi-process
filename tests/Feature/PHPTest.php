@@ -25,14 +25,14 @@ class PHPTest extends BaseTest
                 echo 'process 1';
             },
             function () {
-                echo 'process 1';
+                echo 'process 2';
             },
             function () {
-                echo 'process 1';
+                echo 'process 3';
             }
         );
 
-        foreach ($processor->start()->getTasks() as $task) {
+        foreach ($processor->runPHP()->getTasks() as $task) {
             $this->assertEquals($task['state'], $completedState);
         }
 
