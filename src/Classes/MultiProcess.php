@@ -169,7 +169,7 @@ class MultiProcess
     }
 
     /**
-     * run the php codes from tasks, and each task must be a callback function.
+     * run the php codes
      *
      * @return \SOS\MultiProcess\Classes\MultiProcess
      * @throws \Exception
@@ -177,20 +177,11 @@ class MultiProcess
      */
     public function runPHP()
     {
-        while ($task = $this->checkIfCanProcess()) {
-            $process = new PhpProcess("<?php {$task['command']()} ?>");
 
-            // Add the process to the processing property
-            $this->processing[] = $process;
+        $this->phpProcess($this->higherOrderRun());
 
-            // run this task
-            $process->run();
+        $this->resolveNotRunningProcess($this->higherOrderRun());
 
-            if (!$process->isSuccessful() && $this->getOptions('throwIfTaskNotSuccess')) {
-                throw new ProcessFailedException($process);
-            }
-
-        }
         return $this;
     }
 
@@ -203,19 +194,9 @@ class MultiProcess
      */
     public function run()
     {
-        $callback = function (Process $process) {
-            return $process->run(function ($type, $buffer) {
+        $this->process($this->higherOrderRun());
 
-                // if we enable the output, then display this message depending on it type.
-                if ($this->getOptions('enableOutput')) {
-                    $this->displayOutputMessage($type, $buffer);
-                }
-            });
-        };
-
-        $this->process($callback);
-
-        $this->resolveNotRunningProcess($callback);
+        $this->resolveNotRunningProcess($this->higherOrderRun());
 
         return $this;
     }
@@ -241,6 +222,29 @@ class MultiProcess
 
     }
 
+    /**
+     * run the php codes from tasks, and each task must be a callback function.
+     *
+     * @param $callback
+     *
+     * @author karam mustafa
+     */
+    private function phpProcess($callback)
+    {
+        while ($task = $this->checkIfCanProcess()) {
+
+            $process = new PhpProcess("<?php {$task[$this->getCommandKey()]()} ?>");
+
+            // Add the process to the processing property
+            $this->processing[] = $process;
+
+            $callback($process);
+
+            if (!$process->isSuccessful() && $this->getOptions('throwIfTaskNotSuccess')) {
+                throw new ProcessFailedException($process);
+            }
+        }
+    }
 
     /**
      * this function will set the require config to a symfony process component.
@@ -369,6 +373,25 @@ class MultiProcess
         return (count($this->processing) < $this->processCount) && $task
             ? $task
             : false;
+    }
+
+    /**
+     * return a callback that execute run function inside process component.
+     *
+     * @return \Closure
+     * @author karam mustafa
+     */
+    private function higherOrderRun()
+    {
+        return function (Process $process) {
+            return $process->run(function ($type, $buffer) {
+
+                // if we enable the output, then display this message depending on it type.
+                if ($this->getOptions('enableOutput')) {
+                    $this->displayOutputMessage($type, $buffer);
+                }
+            });
+        };
     }
 
 }
