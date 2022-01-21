@@ -6,11 +6,11 @@ namespace SOS\MultiProcess\Tests\Feature;
 use SOS\MultiProcess\Classes\MultiProcess;
 use SOS\MultiProcess\Tests\BaseTest;
 
-class CommandsTest extends BaseTest
+class PHPTest extends BaseTest
 {
 
     /**
-     * test if the commands are running successfully.
+     * test if the php codes are running successfully.
      *
      * @return void
      * @throws \Exception
