@@ -22,6 +22,7 @@ php artisan multi-process:install
 Features
 -----------
 - [Run process from commands](https://github.com/syrian-open-source/laravel-multi-process/blob/main/docs/commands.md)
+- [Run php codes](https://github.com/syrian-open-source/laravel-multi-process/blob/main/docs/php.md)
 
 
 Changelog
