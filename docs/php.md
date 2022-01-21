@@ -1,29 +1,17 @@
 Usage
 --------
-* Define multiple process and execute them by start function.
+* Define multiple process and execute them by start function,
+each task must be a callback function as you can see in the below example.
 
 ```shell
     $process = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
-        "php artisan make:model modelName",
-        "php artisan make:model ControllerName",
-        // and you can define unlimited commands
+        function () {
+            return \Illuminate\Support\Facades\DB::statement('delete from users where id = 5');
+        }, function () {
+            return \Illuminate\Support\Facades\DB::statement('delete from users where id = 6');
+        }
     );
-    $process->start();
-
-```
-* Define multiple process and execute them by run function.
-
-```shell
-
-    $process = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
-        "php artisan make:model modelName",
-        "php artisan make:model ControllerName",
-        // and you can define unlimited commands
-    );
-
-    // run function will allows you to get the output from the execution process.
-    $process->run();
-
+    $process->runPHP();
 ```
 * Add options.
 
@@ -50,3 +38,4 @@ Usage
     $process->start();
 
 ```
+
