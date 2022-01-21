@@ -4,7 +4,6 @@
 namespace SOS\MultiProcess\Classes;
 
 
-use Couchbase\Exception;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\PhpProcess;
 use Symfony\Component\Process\Process;
@@ -170,9 +169,7 @@ class MultiProcess
     }
 
     /**
-     * this function will execute run function in symfony component
-     * the function will check if we must display the error or the
-     * response status from the executed functions from the symfony classes.
+     * run the php codes from tasks, and each task must be a callback function.
      *
      * @return \SOS\MultiProcess\Classes\MultiProcess
      * @throws \Exception
@@ -180,18 +177,20 @@ class MultiProcess
      */
     public function runPHP()
     {
-
         while ($task = $this->checkIfCanProcess()) {
-
-            $process = new PhpProcess(<<<EOF
-                        <?= 'Hello World' ?>
-                EOF
-            );
+            $process = new PhpProcess("<?php {$task['command']()} ?>");
 
             // Add the process to the processing property
             $this->processing[] = $process;
+
+            // run this task
+            $process->run();
+
+            if (!$process->isSuccessful() && $this->getOptions('throwIfTaskNotSuccess')) {
+                throw new ProcessFailedException($process);
+            }
+
         }
-        dd($process->run());
         return $this;
     }
 

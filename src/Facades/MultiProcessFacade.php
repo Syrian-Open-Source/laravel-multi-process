@@ -11,6 +11,7 @@ use SOS\MultiProcess\Classes\MultiProcess;
  * @method MultiProcess setTasks( ...$args)
  * @method MultiProcess start($callback)
  * @method MultiProcess run($callback)
+ * @method MultiProcess runPHP($callback)
  * @method MultiProcess setOptions($options)
  */
 class MultiProcessFacade extends Facade
