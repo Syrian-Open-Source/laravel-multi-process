@@ -1,3 +1,7 @@
+## v1.2.0 - 2022-02-03
+
+- Add tasks log
+
 ## v1.1.0 - 2022-01-21
 
 - Added run php code feature.
