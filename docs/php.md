@@ -4,14 +4,20 @@ Usage
 each task must be a callback function as you can see in the below example.
 
 ```shell
+
+    // if you are enable the output from the options
+    // you can see the outputs are printed.
     $process = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
         function () {
-            return \Illuminate\Support\Facades\DB::statement('delete from users where id = 5');
+            echo 'The first task to run';
         }, function () {
-            return \Illuminate\Support\Facades\DB::statement('delete from users where id = 6');
+            echo 'The second task to run';
         }
     );
-    $process->runPHP();
+    $process->runPHP()
+     // if ypu want to see the tasks log,
+     //  you can fetch the tasks lists by calling the function
+     ->getTasts();
 ```
 * Add options.
 
@@ -21,10 +27,12 @@ each task must be a callback function as you can see in the below example.
     // you can change them from the file
     // or you can basicly added them from the setter function.
     $process = \SOS\MultiProcess\Facades\MultiProcessFacade::setTasks(
-        "php artisan make:model modelName",
-        "php artisan make:model ControllerName",
-        // and you can define unlimited commands
-    )->setOptions([
+        function () {
+            echo 'The first task to run';
+        }, function () {
+            echo 'The second task to run';
+        }
+    ->setOptions([
        'timeOut' => 60,
        'ideTimeOut' => 60,
        'enableOutput' => true,
@@ -35,7 +43,9 @@ each task must be a callback function as you can see in the below example.
     );
 
     // run or start your tasks.
-    $process->start();
-
+    $process->runPHP()
+    // if ypu want to see the tasks log,
+    //  you can fetch the tasks lists by calling the function
+    ->getTasts();
 ```
 

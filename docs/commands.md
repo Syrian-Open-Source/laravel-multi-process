@@ -8,7 +8,10 @@ Usage
         "php artisan make:model ControllerName",
         // and you can define unlimited commands
     );
-    $process->start();
+    $process->start()
+     // if ypu want to see the tasks log,
+     //  you can fetch the tasks lists by calling the function
+     ->getTasts();
 
 ```
 * Define multiple process and execute them by run function.
@@ -22,7 +25,10 @@ Usage
     );
 
     // run function will allows you to get the output from the execution process.
-    $process->run();
+    $process->run()
+     // if ypu want to see the tasks log,
+     //  you can fetch the tasks lists by calling the function
+     ->getTasts();
 
 ```
 * Add options.
@@ -47,6 +53,9 @@ Usage
     );
 
     // run or start your tasks.
-    $process->start();
+    $process->start()
+     // if ypu want to see the tasks log,
+     //  you can fetch the tasks lists by calling the function
+     ->getTasts();
 
 ```

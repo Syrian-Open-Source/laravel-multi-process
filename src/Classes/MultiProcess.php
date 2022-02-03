@@ -296,11 +296,16 @@ class MultiProcess
             foreach ($this->processing as $i => $runningProcess) {
                 if (!$runningProcess->isRunning()) {
 
+                    // Remove this task from processing list and run it.
+                    // then register the task log tell that task is now running
+                    // and when the task finished register a new log.
                     unset($this->processing[$i]);
 
                     $this->process(function (Process $process) use ($callback) {
                         return $callback($process);
                     });
+
+                    $this->registerTaskLog($i, 'task is running');
 
                     $this->finishTask($i);
                 }
@@ -342,6 +347,8 @@ class MultiProcess
         if (isset($this->tasks[$key])) {
             $this->tasks[$key]['state'] = $this->completedState;
         }
+
+        $this->registerTaskLog($key, 'task finished');
     }
 
     /**
@@ -392,6 +399,23 @@ class MultiProcess
                 }
             });
         };
+    }
+
+
+    /**
+     * when any task change it status, this function must register log that describe the changes.
+     *
+     * @param $key
+     * @param  string  $string
+     *
+     * @author karam mustafa
+     */
+    private function registerTaskLog($key, $string)
+    {
+        if (!isset($this->tasks[$key]['log'])) {
+            $this->tasks[$key]['log'] = [];
+        }
+        array_push($this->tasks[$key]['log'], $string);
     }
 
 }
