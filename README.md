@@ -1,6 +1,6 @@
 ![logo](assets/logo.png)
-[![PHP Composer](https://github.com/karam-mustafa/laravel-multi-process/actions/workflows/php.yml/badge.svg)](https://github.com/karam-mustafa/laravel-multi-process/actions/workflows/php.yml)
-[![Run tests](https://github.com/karam-mustafa/laravel-multi-process/actions/workflows/tests.yml/badge.svg)](https://github.com/karam-mustafa/laravel-multi-process/actions/workflows/tests.yml)
+[![PHP Composer](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/php.yml/badge.svg)](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/php.yml)
+[![Run tests](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/tests.yml/badge.svg)](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/tests.yml)
 ![Code Quality Score](https://api.codiga.io/project/30511/score/svg)
     
 # Multi Process

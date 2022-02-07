@@ -4,6 +4,7 @@
 namespace SOS\MultiProcess\Classes;
 
 
+use SOS\MultiProcess\Abstracts\MultiProcessAbstract;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\PhpProcess;
 use Symfony\Component\Process\Process;
@@ -14,7 +15,7 @@ use Symfony\Component\Process\Process;
  * @author karam mustafa
  * @package SOS\MultiProcess\Classes
  */
-class MultiProcess
+class MultiProcess extends MultiProcessAbstract
 {
 
     /**
