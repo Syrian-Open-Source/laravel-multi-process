@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SOS\MultiProcess\Classes;
+namespace SOS\MultiProcess\Abstracts;
 
 
 class MultiProcessAbstract
