@@ -1,3 +1,8 @@
+## v1.2.1 - 2022-02-08
+
+- Fix the packge badges
+- Fix the Process class extends
+
 ## v1.2.0 - 2022-02-03
 
 - Add tasks log
