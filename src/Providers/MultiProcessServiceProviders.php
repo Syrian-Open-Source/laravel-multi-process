@@ -32,7 +32,7 @@ class MultiProcessServiceProviders extends ServiceProvider
     }
 
     /**
-     *
+     * register all facade classes
      */
     protected function registerFacades()
     {
@@ -54,7 +54,7 @@ class MultiProcessServiceProviders extends ServiceProvider
     }
 
     /**
-     *
+     * find and register all package commands
      *
      * @author karam mustafa
      */
