@@ -11,7 +11,7 @@ Usage
     $process->start()
      // if ypu want to see the tasks log,
      //  you can fetch the tasks lists by calling the function
-     ->getTasts();
+     ->getTasks();
 
 ```
 * Define multiple process and execute them by run function.
@@ -28,7 +28,7 @@ Usage
     $process->run()
      // if ypu want to see the tasks log,
      //  you can fetch the tasks lists by calling the function
-     ->getTasts();
+     ->getTasks();
 
 ```
 * Add options.
@@ -56,6 +56,6 @@ Usage
     $process->start()
      // if ypu want to see the tasks log,
      //  you can fetch the tasks lists by calling the function
-     ->getTasts();
+     ->getTasks();
 
 ```

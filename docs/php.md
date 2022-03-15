@@ -17,7 +17,7 @@ each task must be a callback function as you can see in the below example.
     $process->runPHP()
      // if ypu want to see the tasks log,
      //  you can fetch the tasks lists by calling the function
-     ->getTasts();
+     ->getTasks();
 ```
 * Add options.
 
@@ -46,6 +46,6 @@ each task must be a callback function as you can see in the below example.
     $process->runPHP()
     // if ypu want to see the tasks log,
     //  you can fetch the tasks lists by calling the function
-    ->getTasts();
+    ->getTasks();
 ```
 
