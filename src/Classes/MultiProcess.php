@@ -280,7 +280,6 @@ class MultiProcess extends MultiProcessAbstract
         }
     }
 
-
     /**
      * this function will check if the entire process is was not finished yet
      * if there are any process that waiting to process, run this process
@@ -335,7 +334,6 @@ class MultiProcess extends MultiProcessAbstract
         return null;
     }
 
-
     /**
      * convert task state to completed
      *
@@ -367,7 +365,6 @@ class MultiProcess extends MultiProcessAbstract
         }
         return true;
     }
-
 
     /**
      * check if there is a next task, or we are finish the all processes.
@@ -402,7 +399,6 @@ class MultiProcess extends MultiProcessAbstract
         };
     }
 
-
     /**
      * when any task change it status, this function must register log that describe the changes.
      *
@@ -416,6 +412,7 @@ class MultiProcess extends MultiProcessAbstract
         if (!isset($this->tasks[$key]['log'])) {
             $this->tasks[$key]['log'] = [];
         }
+
         array_push($this->tasks[$key]['log'], $string);
     }
 
