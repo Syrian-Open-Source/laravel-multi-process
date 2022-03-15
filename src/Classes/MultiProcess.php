@@ -403,17 +403,17 @@ class MultiProcess extends MultiProcessAbstract
      * when any task change it status, this function must register log that describe the changes.
      *
      * @param $key
-     * @param  string  $string
+     * @param  string  $message
      *
      * @author karam mustafa
      */
-    private function registerTaskLog($key, $string)
+    private function registerTaskLog($key, $message)
     {
         if (!isset($this->tasks[$key]['log'])) {
             $this->tasks[$key]['log'] = [];
         }
 
-        array_push($this->tasks[$key]['log'], $string);
+        array_push($this->tasks[$key]['log'], $message);
     }
 
 }
